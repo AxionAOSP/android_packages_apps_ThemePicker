@@ -118,6 +118,7 @@ class PreviewWithClockCarouselSectionController(
             clockColorAndSizeButton?.setOnClickListener {
                 navigationController.navigateTo(ClockSettingsFragment())
             }
+            clockColorAndSizeButton?.visibility = View.GONE
             // clockColorAndSizeButton's touch target has to be increased programmatically
             // rather than with padding because this button only appears in the lock screen tab.
             view.post {

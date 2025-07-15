@@ -22,7 +22,7 @@ import android.view.LayoutInflater
 import com.android.systemui.plugins.Plugin
 import com.android.systemui.plugins.PluginManager
 import com.android.systemui.shared.clocks.ClockRegistry
-import com.android.systemui.shared.clocks.DefaultClockProvider
+import com.android.systemui.shared.clocks.NTClockProvider
 import com.android.systemui.shared.plugins.PluginActionManager
 import com.android.systemui.shared.plugins.PluginEnabler
 import com.android.systemui.shared.plugins.PluginInstance
@@ -54,12 +54,12 @@ class ClockRegistryProvider(
             backgroundDispatcher,
             isEnabled = flags.isCustomClocksEnabled(context),
             handleAllUsers = false,
-            DefaultClockProvider(
-                ctx = context,
-                layoutInflater = LayoutInflater.from(context),
-                resources = context.resources,
+            NTClockProvider(
+                context,
+                LayoutInflater.from(context),
+                context.resources,
                 isClockReactiveVariantsEnabled = flags.isClockReactiveVariantsEnabled(),
-                vibrator = null,
+                null
             ),
             keepAllLoaded = true,
             subTag = "Picker",
