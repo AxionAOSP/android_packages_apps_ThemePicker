@@ -191,7 +191,7 @@ constructor(
     override suspend fun setClockSize(size: ClockSize) {
         secureSettingsRepository.setInt(
             name = Settings.Secure.LOCKSCREEN_USE_DOUBLE_LINE_CLOCK,
-            value = 0,
+            value = if (size == ClockSize.DYNAMIC) 1 else 0,
         )
     }
 
@@ -254,6 +254,6 @@ constructor(
         private const val KEY_METADATA_COLOR_TONE_PROGRESS = "metadataColorToneProgress"
 
         // The default clock size is 1, which means dynamic
-        private const val DEFAULT_CLOCK_SIZE = 0
+        private const val DEFAULT_CLOCK_SIZE = 1
     }
 }
